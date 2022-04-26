@@ -62,7 +62,7 @@
           prepend-icon=""
         ></v-file-input>
       </v-col>
-      <v-col cols="12">
+      <!-- <v-col cols="12">
         <v-text-field v-model="selectedItem.price" label="Price*" required></v-text-field>
       </v-col>
       <v-col cols="12">
@@ -72,11 +72,11 @@
           false-value="0"
           true-value="1"
         ></v-switch>
-      </v-col>
+      </v-col> -->
 
-      <v-col v-if="selectedItem.has_discount" cols="12">
+      <!-- <v-col v-if="selectedItem.has_discount" cols="12">
         <v-text-field v-model="selectedItem.discount" label="Discount (%)*"></v-text-field>
-      </v-col>
+      </v-col> -->
       <v-col cols="12" v-if="!selectedItem.id">
         <v-switch
           v-model="selectedItem.active"
@@ -113,24 +113,18 @@ export default {
           orderByIcon: null,
         },
         {
+          name: 'Image',
+          data: 'main_image',
+        },
+        {
           name: 'Name En',
           data: 'name_en',
           orderBy: null,
           orderByIcon: null,
         },
         {
-          name: 'Image',
-          data: 'main_image',
-        },
-        {
           name: 'Name Ar',
           data: 'name_ar',
-          orderBy: null,
-          orderByIcon: null,
-        },
-        {
-          name: 'Price',
-          data: 'price',
           orderBy: null,
           orderByIcon: null,
         },

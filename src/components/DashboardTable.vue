@@ -17,6 +17,7 @@
       <v-spacer></v-spacer>
       <v-spacer></v-spacer>
       <v-select
+        v-if="this.extraData && !extraData.withoutPagination"
         @change="getData()"
         :items="[5, 10, 15, 20]"
         label="Item per page"
@@ -170,8 +171,13 @@ export default {
           headers: { Authorization: `Bearer ${this.$store.state.user.token}` },
         })
         .then((response) => {
-          this.data = response.data.payload.data;
-          this.pagination.length = response.data.payload.last_page;
+          if (this.extraData && this.extraData.withoutPagination) {
+            this.data = response.data.payload;
+            this.pagination.length = 1;
+          } else {
+            this.data = response.data.payload.data;
+            this.pagination.length = response.data.payload.last_page;
+          }
         })
         .catch((error) => {
           this.$store.dispatch('snackbar/error', error.response.data.msg);
