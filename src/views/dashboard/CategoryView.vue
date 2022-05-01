@@ -74,6 +74,7 @@ export default {
         {
           name: 'Actions',
           data: 'actions',
+          showOne: true,
         },
       ],
     };
